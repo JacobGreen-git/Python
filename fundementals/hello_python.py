@@ -43,13 +43,16 @@
 # #composite
 
 #     #lists (known as arrays in JS)
-# list = [1,2,3,4,5,6]
+list = [1,2,3,4,5,6]
 # list2 = ['bob', 'kyle', 'susan']
 # #         0       1         2       Zero indexed
 # name = list2[1] #kyle
 
 # # list[3] = 7 --------- changes index 3 to 7
 # # print(list)
+
+list.append(200) #adds number to list
+print(list)
 
 # #spread
 # first_three = list[0:3]
