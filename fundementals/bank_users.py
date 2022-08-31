@@ -22,6 +22,7 @@ class BankAccount:
         # print(f"Balance: {self.balance}")
         return self
 
+
 class User:
     def __init__(self, name, email):
         self.name = name
@@ -31,10 +32,15 @@ class User:
     def display_info(self):
         print(self.name)
         print(self.email)
-        print(self.account)
+        print(self.account.balance)
+
+    def make_deposit (self, amount):
+        self.account.deposit(amount)
+        print(self.account.balance)
 
 
 Joe = User('Joe Shmo', 'jdsibfvi@gmail.com')
 
-Joe.display_info()
 
+Joe.make_deposit(300)
+Joe.display_info()
