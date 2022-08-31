@@ -17,10 +17,35 @@ class User:
         return self
 
     def enroll(self):
-        print(f"")
+        self.is_rewards_member = True
+        self.gold_card_points = 200
+        # print(f"First Name: {self.first_name}")
+        # print(f"Last Name: {self.last_name}")
+        # print(f"Email: {self.email}")
+        # print(f"Age: {self.age}")
+        # print(f"Rewards Member: {self.is_rewards_member}")
+        # print(f"Gold Card Points: {self.gold_card_points}")
 
     def spend_points(self, amount):
-        print(f"")
+        self.gold_card_points = (self.gold_card_points - amount)
+        print(f"First Name: {self.first_name}")
+        print(f"Last Name: {self.last_name}")
+        print(f"Email: {self.email}")
+        print(f"Age: {self.age}")
+        print(f"Rewards Member: {self.is_rewards_member}")
+        print(f"Gold Card Points: {self.gold_card_points}")
 
 Joe = User('Joe', 'Brown', ' fafq @gmail.com', 34)
+Noel = User('Noel', 'Smith', ' fafq @gmail.com', 24)
+Jose = User('Jose', 'Jones', ' fafq @gmail.com', 55)
+# Joe.display_info()
+
+# Joe.enroll()
+# Joe.spend_points(50)
+
+# Noel.enroll()
+# Noel.spend_points(80)
+
 Joe.display_info()
+Noel.display_info()
+Jose.display_info()
