@@ -21,28 +21,28 @@
 # for fruits in fruits:
 #     print(fruits)
 
-for i in range(50, -1, -1):
-    print(i)
-    if i == 10:
-        continue
-    if i == 8:
-        break
+# for i in range(50, -1, -1):
+#     print(i)
+#     if i == 10:
+#         continue
+#     if i == 8:
+#         break
 
 
 # FOR IN DICTS
 
-# dog = {
-#     'name': 'spot',
-#     'age': 3,
-#     'color': 'brown',
-# }
+dog = {
+    'name': 'spot',
+    'age': 3,
+    'color': 'brown',
+}
 
-# # for prop in dog:
-# #     print(prop)
+for prop in dog:
+    print(prop)
 # #when we loop over a dictionary, the interative variable will be the key
 
-# for key in dog:
-#     print(f"{key}: {dog[key]}")
+for key in dog:
+    print(f"{key}: {dog[key]}")
 
 
 # # LIST of DICTS
