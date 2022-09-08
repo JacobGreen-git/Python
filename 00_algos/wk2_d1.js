@@ -24,34 +24,34 @@ const expected3 = {};
  *    from the given arr and the values are the amnt of times that item occurs.
  *  Possible hint: .hasOwnProperty() <- Don't know it? Google it as a group!
  */
-// function makeFrequencyTable(arr) {
-//     var count = 0
-//     var newDict = {}
-//     for(let i = 0; i <= arr.length -1; i++)
-//         if (newDict.hasOwnProperty(arr[i]) == false){
-//             newDict[arr[i]] += 1;
-//             count++;
-//         }
-//     return newDict
-// }
+function makeFrequencyTable(arr) {
+    var count = 0
+    var newDict = {}
+    for (let i = 0; i <= arr.length - 1; i++)
+        if (newDict.hasOwnProperty(arr[i]) == false) {
+            newDict[arr[i]] += 1;
+            count++;
+        }
+    return newDict
+}
 
-function makeFrequencyTable(arr) { 
+function makeFrequencyTable(arr) {
     let table = {}
-    for (let elem of arr){
-      // if (table.hasOwnProperty(elem)){
-      //   table[elem]+= 1
-      // } else {
-      //   table[elem] = 1
-      // }
+    for (let elem of arr) {
+        // if (table.hasOwnProperty(elem)){
+        //   table[elem]+= 1
+        // } else {
+        //   table[elem] = 1
+        // }
         table.hasOwnProperty(elem) ? table[elem]++ : table[elem] = 1
-      // condition               ?  if true      : if false
+        // condition               ?  if true      : if false
     }
     return table
-    }
+}
 
-console.log(makeFrequencyTable(arr1)) 
+console.log(makeFrequencyTable(arr1))
 // console.log("Expected: ", expected1);
-console.log(makeFrequencyTable(arr2)) 
+console.log(makeFrequencyTable(arr2))
 // console.log("Expected: ", expected2);
 console.log(makeFrequencyTable(arr3))
 // console.log("Expected: ", expected3);
