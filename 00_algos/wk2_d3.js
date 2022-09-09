@@ -89,7 +89,22 @@ const expectedC = false;
  * @returns {boolean} Whether the given strings braces are valid.
  */
 function bracesValid(str) {
-    //Your code here
+    const stack = [];
+    const isOpen = { "(": true, "{": true, "[": true }
+    const closesToOpens = { ")": "(", "}": "{", "]": "[" };
+
+    for (let char of str) {
+    if (isOpen[char]) {
+        stack.push(char);
+    } else if (closesToOpens[char]) {
+        if (closesToOpens[char] === stack[stack.length - 1]) {
+        stack.pop();
+        } else {
+        return false;
+        }
+    }
+    }
+    return stack.length === 0;
 }
 console.log(bracesValid(strA)) // expected: true
 console.log(bracesValid(strB)) // expected: false
