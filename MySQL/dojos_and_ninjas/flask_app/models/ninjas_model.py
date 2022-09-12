@@ -8,7 +8,7 @@ class Ninja:
         self.age = data['age']
         self.dojo_id = data['dojo_id']
         self.created_at = data['created_at']
-        self.updates_at = data['updates_at']
+        self.updated_at = data['updated_at']
 
     @classmethod
     def get_all_ninja(cls):

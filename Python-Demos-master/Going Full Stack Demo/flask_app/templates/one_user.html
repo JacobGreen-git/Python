@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Showing {{only_one_user.id}}</title>
+</head>
+<body>
+    <h2>User {{only_one_user.id}}</h2>
+    <p>First Name: {{only_one_user.first_name}}</p>
+    <p>Last Name: {{only_one_user.last_name}}</p>
+    <p>Email: {{only_one_user.email}}</p>
+    <p>Created At: {{only_one_user.created_at.strftime("%b %d %Y")}}</p>
+    <p>Updated At: {{only_one_user.updated_at.strftime("%m %d %Y")}}</p>
+    <a href="/">Home</a>
+</body>
+</html>
