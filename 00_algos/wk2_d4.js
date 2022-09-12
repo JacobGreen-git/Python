@@ -37,7 +37,20 @@ to the original position.
  *    right.
  * @returns {string} The string rotated by the given amount.
  */
-function rotateStr(str, amnt) {}
+function rotateStr(str, amnt) {
+    //Split the string
+    //set amount to counter
+    //loop through array index x amnt times from the back and return to the front
+    let arr = str.split('')
+    for(var count = amnt; count != 0; count--)
+
+}
+
+console.log(rotateStr(str, rotateAmnt1))
+console.log(rotateStr(str, rotateAmnt2))
+console.log(rotateStr(str, rotateAmnt3))
+console.log(rotateStr(str, rotateAmnt4))
+console.log(rotateStr(str, rotateAmnt5))
 
 /** */
 
@@ -69,4 +82,6 @@ const two_expected3 = false;
  * @param {string} s2
  * @returns {boolean} Whether the second string is a rotated version of the 1st.
  */
-function isRotation(s1, s2) {}
+function isRotation(s1, s2) {
+    
+}
