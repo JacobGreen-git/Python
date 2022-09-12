@@ -11,10 +11,11 @@
     <form action="/ninja/update" method="post">
         <div>
             <label for="dojo_names">Dojo:</label>
-            <select name="dojo_names" id="dojo_names"></select>
-            {% for one_dojo in all_dojos %}
-                <option value="{{one_dojo.name}}"></option>
-            {%endfor%}
+            <select name="dojo_id" id="dojo_id">
+                {% for one_dojo in all_dojos %}
+                <option value="{{one_dojo.id}}">{{one_dojo.name}}</option>
+                {%endfor%}
+            </select>
         </div>
         <div>
             <label for="first_name">First Name:</label>

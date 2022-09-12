@@ -18,6 +18,13 @@ class Dojo:
         return all_dojos
 
     @classmethod
+    def get_one_dojo_with_ninjas(cls,data):
+        query = "SELECT * FROM dojos JOIN ninjas ON dojos.id = dojo_id WHERE dojos.id = %(id)s;"
+
+
+
+
+    @classmethod
     def save_dojo(cls, data):
         query = "INSERT INTO dojos (name) VALUES (%(name)s);"
         results = connectToMySQL('dojos_and_ninjas_db').query_db(query,data)

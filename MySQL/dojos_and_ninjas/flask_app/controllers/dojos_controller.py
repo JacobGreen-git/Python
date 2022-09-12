@@ -22,6 +22,7 @@ def add_ninja():
     all_dojos = Dojo.get_all_dojos()
     return render_template('add_ninja.html', all_dojos=all_dojos)
 
-@app.route('/dojo/ninjas')
-def view_ninjas():
-    return render_template('view_ninjas.html')
+@app.route('/dojo/<int:id>/ninjas')
+def view_ninjas(id):
+    one_dojo = Dojo.get_one_dojo_with_ninjas()
+    return render_template('view_ninjas.html', one_dojo = one_dojo)
