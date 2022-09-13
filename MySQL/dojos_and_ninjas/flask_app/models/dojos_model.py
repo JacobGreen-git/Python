@@ -33,7 +33,7 @@ class Dojo:
         results = connectToMySQL('dojos_and_ninjas_db').query_db(query, data)
         # print(results)
         if len(results) > 0:
-            print(results)
+            # print(results)
             dojo_instance = cls(results[0])
             ninja_list = []
             for row_from_db in results:

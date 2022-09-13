@@ -41,9 +41,8 @@ function rotateStr(str, amnt) {
     //Split the string
     //set amount to counter
     //loop through array index x amnt times from the back and return to the front
-    let arr = str.split('')
-    for(var count = amnt; count != 0; count--)
-
+    // let arr = str.split('')
+    // for(var count = amnt; count != 0; count--)
 }
 
 console.log(rotateStr(str, rotateAmnt1))
