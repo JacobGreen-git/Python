@@ -3,22 +3,27 @@ from flask import render_template, redirect, request, flash
 from flask_app.models.email_model import Email
 
 
-@app.route ('/')
-def home():
-    return render_template ('email_entry.html')
+@app.route('/')
+def index():
+    return render_template("index.html")
 
 
-@app.route('/add_email', methods=['POST'])
-def register():
-    if not Email.validate_email(request.form):
-        # we redirect to the template with the form.
+@app.route('/process',methods=['POST'])
+def process():
+    if not Email.is_valid(request.form):
         return redirect('/')
-    # ... do other things
-    Email.add_email(request.form)
+    Email.save(request.form)
     return redirect('/results')
 
 
-@app.route ('/results')
-def get_all():
-    all_emails = Email.get_all()
-    return  render_template('email_display.html', all_emails=all_emails)
+@app.route('/results')
+def results():
+    return render_template("results.html",emails=Email.get_all())
+
+@app.route('/destroy/<int:id>')
+def destroy_email(id):
+    data = {
+        "id": id
+    }
+    Email.destroy(data)
+    return redirect('/results')
