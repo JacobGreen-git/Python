@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Car</title>
+</head>
+<body>
+
+    <h1>Edit {{car.model}}</h1>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/logout">Logout</a>
+    {% for message in get_flashed_messages() %}
+        <p>{{message}}</p>
+    {% endfor %}
+    <DIV>
+        <form action="/cars/{{car.id}}/update" method="post">
+            <label for="price">Price:</label>
+            <input type="number" name="price" value="{{car.price}}">
+            <br>
+            <label for="make">Make:</label>
+            <input type="text" name="make" value="{{car.make}}">
+            <br>
+            <label for="model">Model:</label>
+            <input type="text" name="model" value="{{car.model}}">
+            <br>
+            <label for="year">Year:</label>
+            <input type="number" name="year" value="{{car.year}}">
+            <br>
+            <label for="description">Description</label>
+            <textarea name="description" id="'description">{{car.description}}</textarea>
+            <br>
+            <button>Update</button>
+        </form>
+        
+    </DIV>
+</body>
+</html>

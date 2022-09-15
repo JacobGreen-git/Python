@@ -1,13 +1,13 @@
 from flask import flash
 from flask_app.config.mysqlconnection import connectToMySQL
-# from flask_app.models import 
-#IMPORT OTHER MODEL HERE
+from flask_app.models import car_model
+
 
 import re
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
 
-mysql_db = "recipe_db"
+mysql_db = "cars_and_users_db"
 
 class User:
     def __init__(self,data):
@@ -25,22 +25,6 @@ class User:
         query ='INSERT INTO users (first_name, last_name, email, password) VALUES(%(first_name)s,%(last_name)s,%(email)s,%(password)s);'
         results = connectToMySQL(mysql_db).query_db(query, data)
         return results
-
-    #READ ALL
-    @classmethod
-    def get_all_users(cls):
-        query = 'SELECT * FROM users;'
-        results = connectToMySQL(mysql_db).query_db(query)
-        print("============================")
-        print("This is the result we got from our get all query...", results)
-        print("============================")
-        empty_list = []
-        for u in results:
-            empty_list.append(cls(u))
-        print("============================")
-        print("This is our list of users...", empty_list)
-        print("============================")
-        return empty_list
     
     #READ ONE
     @classmethod
@@ -49,45 +33,32 @@ class User:
         results = connectToMySQL(mysql_db).query_db(query, data)
         the_one_item = cls(results[0])
         return the_one_item
-    
-    #UPDATE
-    @classmethod
-    def update_user(cls, data):
-        query = 'UPDATE users SET COLUMN_NAME=%(FORM_NAME)s WHERE id=%(id)s;'
-        results = connectToMySQL(mysql_db).query_db(query, data)
-        return results
 
-    #DELETE
-    @classmethod
-    def destroy_user(cls, data):
-        query = 'DELETE FROM users WHERE id = %(id)s;'
-        results = connectToMySQL(mysql_db).query_db(query, data)
-        return results
 
     #GET BY ID WITH JOIN
     @classmethod
     def get_by_id(cls, data):
-        query = "SELECT * FROM users LEFT JOIN recipes on users.id = recipes.user_id WHERE users.id = %(id)s;"
+        query = "SELECT * FROM users LEFT JOIN cars on users.id = cars.user_id WHERE users.id = %(id)s;"
         results = connectToMySQL(mysql_db).query_db(query, data)
         if len(results) < 1:
             return False
         user = cls(results[0])
-        list_of_recipes = []
+        list_of_cars = []
         for row in results:
-            if row['recipes.id'] == None:
+            if row['cars.id'] == None:
                 break
-            recipe_data = {
+            car_data = {
                 **row,
-                'id': row['recipes.id'],
-                'created_at': row['recipes.created_at'],
-                'updated_at': row['recipes.updated_at']
+                'id': row['cars.id'],
+                'created_at': row['cars.created_at'],
+                'updated_at': row['cars.updated_at']
             }
-            this_recipe = recipe_model.Recipe(recipe_data)
-            list_of_recipes.append(this_recipe)
-        user.recipes = list_of_recipes
+            this_car = car_model.Car(car_data)
+            list_of_cars.append(this_car)
+        user.cars = list_of_cars
         return user
 
-    #GET BY MAIL TO VALIDATE
+    #GET BY EMAIL TO VALIDATE
     @classmethod
     def get_by_email(cls, data):
         query = "SELECT * FROM users WHERE email = %(email)s;"
@@ -100,13 +71,13 @@ class User:
     @staticmethod
     def validate(user_data):
         is_valid = True
-        if len(user_data['first_name']) < 2:
+        if len(user_data['first_name']) < 3:
             flash("First name required", "reg")
             is_valid = False
-        if len(user_data['last_name']) < 2:
+        if len(user_data['last_name']) < 3:
             flash("Last name required", "reg")
             is_valid = False
-        if len(user_data['email']) < 2:
+        if len(user_data['email']) < 3:
             flash("Email required", 'reg')
             is_valid = False
         if len(user_data['password']) < 8:

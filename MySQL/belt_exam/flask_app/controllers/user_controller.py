@@ -26,7 +26,7 @@ def register():
     id = user_model.User.create_user(data)
     print(id)
     session['user_id'] = id
-    return redirect ('/welcome')
+    return redirect ('/dashboard')
 
 @app.route('/user/login', methods=['POST'])
 def login():
@@ -39,7 +39,7 @@ def login():
         flash('Invalid login info', 'log')
         return redirect ('/home')
     session['user_id'] = user_in_db.id
-    return redirect('/welcome')
+    return redirect('/dashboard')
 
 @app.route('/logout')
 def logout():

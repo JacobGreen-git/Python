@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+
+    <h1>Welcome to Car Dealz, {{logged_user.first_name}}</h1>
+    <a href="/logout">Logout</a>
+    <DIV>
+        {% for message in get_flashed_messages() %}
+            <p>{{message}}</p>
+        {% endfor %}
+        <h3>All posted cars:</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Model</th>
+                    <th>Year</th>
+                    <th>Seller</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for car in all_cars %}
+                <tr>
+                    <td>{{car.model}}</td>
+                    <td>{{car.year}} </td>
+                    <td>{{car.creator.first_name}} {{car.creator.last_name}}</td>
+                    <td>
+                        <a href="/cars/{{car.id}}">View</a>
+                        {% if session['user_id'] == car.user_id %}
+                        | <a href="/cars/{{car.id}}/edit">Edit</a> |
+                        <a href="/cars/{{car.id}}/delete">Delete</a>
+                        {%endif%}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="/cars/new">Add a Car</a>
+    </DIV>
+</body>
+</html>

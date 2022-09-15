@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <h3>{{car.name}}</h3>
+    <div>
+        <label for="price">Price:</label>
+        <h2>{{car.price}}</h2>
+        <br>
+        <label for="model">Model:</label>
+        <p>{{car.model}}</p>
+        <br>
+        <label for="make">Make:</label>
+        <p>{{car.make}}</p>
+        <br>
+        <label for="year">Year:</label>
+        <p>{{car.year}}</p>
+        <br>
+        <label for="description">Description:</label>
+        <p>{{car.description}}</p>
+        <br>
+        <p>Seller: {{car.creator.first_name}} {{car.creator.last_name}}</p>
+    </div>
+    <a href="/cars/{{car.id}}/delete">Purchase Car</a>
+    <a href="/dashboard">Home</a>
+</body>
+</html>
