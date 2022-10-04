@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Recipe</title>
+</head>
+<body>
+
+    <h1>Add a recipe</h1>
+    <a href="/welcome">Home</a>
+    <a href="/logout">Logout</a>
+    <h1>Edit your recipe!</h1>
+    {% for message in get_flashed_messages() %}
+        <p>{{message}}</p>
+    {% endfor %}
+    <DIV>
+        <form action="/recipes/{{recipe.id}}/update" method="post">
+            <label for="name">Name</label>
+            <input type="text" name="name" value="{{recipe.name}}">
+            <label for="description">Description</label>
+            <textarea name="description" id="'description">{{recipe.description}}</textarea>
+            <label for="instructions">Instructions</label>
+            <textarea name="instructions" id="'instructions">{{recipe.instructions}}</textarea>
+            <label for="date_made">Date Made</label>
+            <input type="date" name="date_made" value="{{recipe.date_made}}">
+            <div>
+                Made in under 30 minutes?
+                <label for="true">Yes</label>
+                <input type="radio" name="under_30" id='true' value="1" {% if recipe.under_30 == 1 %}checked{%endif%}> 
+                <!-- checked is how you check radio boxes for edits -->
+                <label for="false">No</label>
+                <input type="radio" name="under_30" id='false' value="2" {% if recipe.under_30 == 2 %}checked{%endif%}>
+            </div>
+            <button>Submit Edits</button>
+        </form>
+        
+    </DIV>
+</body>
+</html>
